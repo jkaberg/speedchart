@@ -1,4 +1,4 @@
-FROM alpine
+FROM python:3.6.5-alpine
 
 ENV CSV_PATH=/input/speedchart.csv
 
@@ -8,9 +8,9 @@ RUN cd /app \
     && apk -U upgrade \
     && BUILD_DEPS=" \
        gcc \
-       python2-dev \
+       python3-dev \
        musl-dev" \
-    && apk add ${BUILD_DEPS} python py-pip \
+    && apk add ${BUILD_DEPS} \
     && pip install -r requirements.txt \
     && apk del ${BUILD_DEPS} \
     && rm -rf /var/cache/apk/* 

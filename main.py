@@ -43,14 +43,14 @@ def createChart(stats):
 
     # Add servers and plot speeds
     for server, speed in speeds.items():
-        chart.add(server, speed['down'])
-        chart.add(server, speed['up'], secondary=True)
+        chart.add('{} (Download)'.format(server), speed['down'])
+        chart.add('{} (Upload)'.format(server), speed['up'], secondary=True)
     
     # Add avarage speeds
     avg_down = avg_down / len(stats)
     avg_up = avg_up / len(stats)
-    chart.add('Avarage', [avg_down])
-    chart.add('Avarage', [avg_up], secondary=True)
+    chart.add('Avarage (Download)', [avg_down])
+    chart.add('Avarage (Upload)', [avg_up], secondary=True)
 #    chart.x_labels = time
 
     # Render
